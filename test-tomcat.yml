@@ -14,7 +14,7 @@
     - name: Copy the WAR file to the Tomcat webapps directory on the target machine
       copy:
         src: /tmp/webapp.war
-        dest: /path/to/tomcat/webapps/webapp.war
+        dest: /opt/tomcat/webapps/webapp.war
         owner: tomcat  # Replace with the appropriate user that Tomcat runs as
         group: tomcat  # Replace with the appropriate group for Tomcat
         mode: 0777  # Adjust the permissions as needed
