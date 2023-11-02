@@ -3,18 +3,18 @@
   hosts: app
   become: yes  # You may need to elevate privileges to copy files to Tomcat's webapps directory
 
-  tasks:
-    - name: Copy the WAR file from Jenkins workspace to Ansible control machine
-      synchronize:
-        src: "/var/lib/jenkins/workspace/dev/webapp/target/webapp.war"  # Update this path to the actual Jenkins workspace path
-        dest: "/tmp/webapp.war"
-        mode: pull
+#  tasks:
+ #   - name: Copy the WAR file from Jenkins workspace to Ansible control machine
+  #    synchronize:
+   #     src: "/var/lib/jenkins/workspace/dev/webapp/target/webapp.war"  # Update this path to the actual Jenkins workspace path
+    #    dest: "/tmp/webapp.war"
+     #   mode: pull
         # rsync_opts: ["-avz", "--progress"]  # Optional - adjust rsync options
 
     - name: Copy the WAR file to the Tomcat webapps directory on the target machine
       copy:
-        src: /tmp/webapp.war
-        dest: /opt/tomcat/webapps/webapp.war
+        src: "var/lib/jenkins/workspace/dev/webapp/target/webapp.war"
+        dest: "/opt/tomcat/webapps/webapp.war"
         owner: tomcat  # Replace with the appropriate user that Tomcat runs as
         group: tomcat  # Replace with the appropriate group for Tomcat
         mode: 0777  # Adjust the permissions as needed
