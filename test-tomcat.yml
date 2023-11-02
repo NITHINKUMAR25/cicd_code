@@ -11,15 +11,16 @@
      #   mode: pull
         # rsync_opts: ["-avz", "--progress"]  # Optional - adjust rsync options
 
-    - name: Copy the WAR file to the Tomcat webapps directory on the target machine
-      copy:
-        src: var/lib/jenkins/workspace/dev/webapp/target/webapp.war
-        dest: /opt/tomcat/webapps/webapp.war
-        owner: tomcat  # Replace with the appropriate user that Tomcat runs as
-        group: tomcat  # Replace with the appropriate group for Tomcat
-        mode: 0777  # Adjust the permissions as needed
+        tasks:
+        - name: Copy the WAR file to the Tomcat webapps directory on the target machine
+          copy:
+          src: var/lib/jenkins/workspace/dev/webapp/target/webapp.war
+          dest: /opt/tomcat/webapps/webapp.war
+          owner: tomcat  # Replace with the appropriate user that Tomcat runs as
+          group: tomcat  # Replace with the appropriate group for Tomcat
+          mode: 0777  # Adjust the permissions as needed
 
-    - name: Restart Tomcat to deploy the WAR file
-      systemd:
-        name: tomcat  # Replace with the name of your Tomcat systemd service
-        state: restarted
+        - name: Restart Tomcat to deploy the WAR file
+          systemd:
+          name: tomcat  # Replace with the name of your Tomcat systemd service
+          state: restarted
