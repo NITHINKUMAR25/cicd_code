@@ -13,8 +13,8 @@
 
     - name: Copy the WAR file to the Tomcat webapps directory on the target machine
       copy:
-        src: "var/lib/jenkins/workspace/dev/webapp/target/webapp.war"
-        dest: "/opt/tomcat/webapps/webapp.war"
+        src: var/lib/jenkins/workspace/dev/webapp/target/webapp.war
+        dest: /opt/tomcat/webapps/webapp.war
         owner: tomcat  # Replace with the appropriate user that Tomcat runs as
         group: tomcat  # Replace with the appropriate group for Tomcat
         mode: 0777  # Adjust the permissions as needed
