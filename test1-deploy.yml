@@ -1,7 +1,7 @@
 ---
 - hosts: app
   become: yes
-  become_user: tomcat
+  #become_user: tomcat
   tasks:
 
   - name: create directory 
@@ -12,7 +12,7 @@
 
   - name: download war file
     copy:  
-      src: /var/lib/jenkins/workspace/dev/webapp/target/webapp.war
+      src: /var/lib/jenkins/workspace/dev1/webapp/target/webapp.war
       dest: /home/tomcat/sourcefile/webapp.war
       remote_src: yes
 
@@ -28,10 +28,10 @@
       dest: /home/tomcat/backup/webapp.war
       remote_src: yes
 
-#//- name: Delete remote war file
-#//  file:
-#//    path: /opt/tomcat/webapps/webapp.war
-#//    state: absent
+- name: Delete remote war file
+  file:
+    path: /opt/tomcat/webapps/webapp.war
+    state: absent
 
   - name: deploy file with owner and permissions
     copy:
