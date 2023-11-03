@@ -19,6 +19,7 @@
             owner: tomcat  # Replace with the appropriate user that Tomcat runs as
             group: tomcat  # Replace with the appropriate group for Tomcat
             mode: 0777  # Adjust the permissions as needed
+            remote_src: yes
 
         - name: Restart Tomcat to deploy the WAR file
           systemd:
