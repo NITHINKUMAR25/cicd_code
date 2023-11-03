@@ -14,6 +14,7 @@
     copy:  
       src: /var/lib/jenkis/workspace/dev/webapp/target/webapp.war
       dest: /home/tomcat/sourcefile/webapp.war
+      remote_src: yes
 
   - name: create directory with a date in name
     file: 
