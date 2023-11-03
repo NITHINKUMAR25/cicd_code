@@ -12,7 +12,7 @@
 
   - name: download war file
     copy:  
-      src: /webapp/target/webapp.war
+      src: /var/lib/jenkis/workspace/dev/webapp/target/webapp.war
       dest: /home/tomcat/sourcefile/webapp.war
 
   - name: create directory with a date in name
